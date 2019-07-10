@@ -1,3 +1,6 @@
+## Add the required .NET assembly for [System.Windows.MessageBox]
+Add-Type -AssemblyName System.Windows.Forms
+
 ## Function to get the list of existing netwoek adapters with thier status
 function Get-NetworkConnectionStatus {
     $networks = Get-NetAdapter
@@ -12,7 +15,7 @@ function Get-NetworkConnectionStatus {
     }
     
     ## Display message box after finishing the proccess
-    [System.Windows.MessageBox]::Show('SwitchNetwork has been done successfully.')
+    [System.Windows.Forms.MessageBox]::Show('SwitchNetwork has been done successfully.', 'Information', 'OK', 'Information')
 }
 
 ## Function to connect to Ethernet and disable WiFi
