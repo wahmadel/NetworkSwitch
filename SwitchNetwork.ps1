@@ -9,9 +9,9 @@ function Get-NetworkConnectionStatus {
     
     foreach ($network in $networks) {
         ## Connect to Ethernet if the WiFi is the current connected network
-        If($network.Name -like 'Ethernet*' -and $network.Status -eq 'Disabled') { Connect-Ethernet break }
+        If($network.Name -like 'Ethernet*' -and ($network.Status -eq 'Disabled' -or $network.Status -ne 'Up')) { Connect-Ethernet break }
         ## Connect to WiFi if the Ethernet is the current connected network
-        If($network.Name -like 'Wi-Fi*' -and $network.Status -eq 'Disabled') { Connect-WiFi break }
+        If($network.Name -like 'Wi-Fi*' -and ($network.Status -eq 'Disabled' -or $network.Status -ne 'Up')) { Connect-WiFi break }
     }
     
     ## Display message box after finishing the proccess
